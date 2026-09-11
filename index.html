@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jovica Materic | Co-op Work Term Report | Pacwill Environmental</title>
+  <!-- Tells phones to use the real screen width instead of zooming out -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="University of Guelph co-op work term report: Web Application Developer at Pacwill Environmental, 2026.">
+
+  <!-- 1. Bootstrap's main stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 2. Push the page down so the fixed navigation bar doesn't cover it.
+          Must sit BETWEEN the two Bootstrap files (Bootstrap 2 requirement). -->
+  <style>
+    body { padding-top: 60px; }
+  </style>
+
+  <!-- 3. Bootstrap's phone/tablet adjustments -->
+  <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+  <!-- 4. Our own tweaks, loaded last so they win over Bootstrap's defaults -->
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<!-- data-spy etc. switch on "scrollspy": the navbar highlights the section you're reading -->
+<body data-spy="scroll" data-target=".navbar" data-offset="70">
+
+  <!-- ===================== NAVIGATION BAR ===================== -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+
+        <!-- The "hamburger" button that only appears on narrow screens -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="#intro">Jovica Materic</a>
+
+        <!-- These links collapse into the hamburger menu on phones -->
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#pacwill">Pacwill</a></li>
+            <li><a href="#job">My Job</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#challenges">Challenges</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#thanks">Thanks</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE CONTENT ===================== -->
+  <!-- "container" centres everything and sets a sensible maximum width -->
+  <div class="container">
+
+    <!-- 1. INTRODUCTION -->
+    <section id="intro">
+      <div class="hero-unit">
+        <h1>Jovica Materic</h1>
+        <p>Web Application Developer (co-op), Pacwill Environmental</p>
+        <p><small>May 11, 2026 &ndash; December 20, 2026<br>
+        University of Guelph, Computer Science co-op work term report</small></p>
+      </div>
+      <p class="muted">[Placeholder] Short introduction: when and where I worked, what I did, and what I hope readers take away.</p>
+    </section>
+
+    <!-- 2. ABOUT PACWILL -->
+    <section id="pacwill">
+      <div class="page-header">
+        <h2>About Pacwill</h2>
+      </div>
+      <p class="muted">[Placeholder] What Pacwill does, who its customers are, and what it was like to work there.</p>
+    </section>
+
+    <!-- 3. MY JOB -->
+    <section id="job">
+      <div class="page-header">
+        <h2>My Job</h2>
+      </div>
+      <p class="muted">[Placeholder] The two codebases, my main areas of work, and which skills came from class versus the job.</p>
+    </section>
+
+    <!-- 4. GOALS -->
+    <section id="goals">
+      <div class="page-header">
+        <h2>Goals and Reflection</h2>
+      </div>
+      <p class="muted">[Placeholder] My five learning goals, what happened with each, and how far I got.</p>
+    </section>
+
+    <!-- 5. CHALLENGES -->
+    <section id="challenges">
+      <div class="page-header">
+        <h2>Challenges</h2>
+      </div>
+      <p class="muted">[Placeholder] Modernizing legacy PHP code and what it taught me.</p>
+    </section>
+
+    <!-- 6. CONCLUSION -->
+    <section id="conclusion">
+      <div class="page-header">
+        <h2>Conclusion</h2>
+      </div>
+      <p class="muted">[Placeholder] The main takeaways from the work term.</p>
+    </section>
+
+    <!-- 7. ACKNOWLEDGMENTS -->
+    <section id="thanks">
+      <div class="page-header">
+        <h2>Acknowledgments</h2>
+      </div>
+      <p class="muted">[Placeholder] Thanks to Sean Miner, Daniel, and Tom.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Jovica Materic. University of Guelph co-op work term report, built with Bootstrap 2.3.2.</p>
+    </footer>
+
+  </div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- jQuery must load first, because Bootstrap's JavaScript depends on it -->
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

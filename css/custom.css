@@ -1,0 +1,25 @@
+/* custom.css
+   Our own styling, layered on top of Bootstrap 2.3.2.
+   This file is loaded last, so its rules win over Bootstrap's defaults.
+   We'll add the real design here during the polish step. */
+
+/* Slightly larger text than Bootstrap's 14px default, for easier long-form reading */
+body {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* When a navbar link is clicked, stop the section heading
+   from landing underneath the fixed navigation bar */
+section {
+  scroll-margin-top: 60px;
+  padding-bottom: 20px;
+}
+
+/* Separate the footer from the last section */
+footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid #e5e5e5;
+  color: #777;
+}
