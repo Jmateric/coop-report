@@ -89,7 +89,21 @@
       <div class="page-header">
         <h2>My Job</h2>
       </div>
-      <p class="muted">[Placeholder] The two codebases, my main areas of work, and which skills came from class versus the job.</p>
+      <p>My official title was Web Application Developer (co-op), and the job offer described the responsibilities in a single line: development of web applications, and other duties as assigned. In practice, that covered a lot of ground. I worked a hybrid schedule, two days a week in the Stoney Creek office and three from home, across two codebases: the public website, pacwill.ca, and the internal database and employee portal, db.pacwill.ca. Both are built with PHP, SQL, HTML, CSS, and JavaScript.</p>
+
+      <h3>The public website</h3>
+      <p>About a month into the term, we noticed that pacwill.ca ranked poorly on Google searches and often sent people to product PDFs instead of proper web pages, which meant Pacwill was losing potential customers. Working with the marketing department on search engine optimization, I set out to build a landing page for every item in the company catalogue. The first thing I did was write a tracker script showing which items had a landing page and which still needed one. I then organized the remaining pages into batches, prioritizing the items with the highest sales.</p>
+      <p>Building every page by hand would have taken the rest of my term, but the product details already existed in the manufacturers' spec sheets. So I wrote a Python tool that reads a spec sheet PDF, sends it to the Claude API, and generates a landing page from the extracted data. I used an AI model instead of a standard PDF library because some of the PDFs were so old that modern Python PDF libraries couldn't read them. It was also my first time working with an API.</p>
+      <p>Along the way, I consolidated the site's search and page-linking code, which had been copied into several places, into a single shared file used by both the English and French versions. I also fixed display and file-loading bugs that only appeared in certain browsers.</p>
+
+      <h3>The employee portal</h3>
+      <p>Most of my work on db.pacwill.ca came through a company-wide Teams channel called IT Development, where anyone at Pacwill can report a problem or request a feature. Working through those requests was a big part of my day-to-day. That meant fixing bugs, many of which traced back to outdated PHP libraries, and building features employees asked for. I also built new view pages that modernized the portal's interface.</p>
+
+      <h3>Modernizing the system</h3>
+      <p>Later in the term, I joined the effort to modernize how Pacwill's software is developed and deployed, following a phased plan led by Daniel. Daniel taught me Docker, and we worked together to write the Dockerfiles for the database backend and the employee portal, along with compose files that lint the codebase and flag outdated PHP libraries. The worst of those was PHPMailer. Pacwill was still running version 5.2, and essentially every function in it had changed, so we worked through the official <a href="https://github.com/PHPMailer/PHPMailer/blob/master/UPGRADING.md">PHPMailer upgrade guide</a> to bring it up to date. I'm currently working on moving the company's stored files to Google Cloud Storage. The project is still ongoing, and the Challenges section covers what made it so difficult.</p>
+
+      <h3>Where my skills came from</h3>
+      <p>I came into this job with a strong foundation in C and Python, but little real experience with web development. I learned most of my PHP and SQL by reading the existing code. The course that prepared me most was CIS*2750, nicknamed "Angel of Death." It wasn't nearly as thorough as professional development, but it introduced a broad range of software development concepts that I ran into again at Pacwill. I'd estimate the course gave me about 30% of what I needed. The other 70% I learned on the job, much of it working with Daniel, who introduced me to Git, Docker, Google Cloud, Google Artifact Registry, Claude Code, and modern development workflows. Google Cloud was entirely new to me, and it's the reason I plan to take CIS*4010, Cloud Computing.</p>
     </section>
 
     <!-- 4. GOALS -->
