@@ -144,7 +144,20 @@
       <div class="page-header">
         <h2>Challenges</h2>
       </div>
-      <p class="muted">[Placeholder] Modernizing legacy PHP code and what it taught me.</p>
+      <p>The hardest part of my term wasn't writing new code. It was dealing with code that had been accumulating since before I was born.</p>
+
+      <h3>"Upgrade the version number" is not a plan</h3>
+      <p>Parts of db.pacwill.ca were originally written for PHP 4, a version released in 2000. The modernization plan called for getting the codebase to PHP 8, and I went into that assuming it would mostly be a matter of finding what broke and fixing it. It wasn't. Functions we relied on had been deprecated in one version and removed entirely in a later one. Libraries had been rewritten so thoroughly that upgrading meant relearning them rather than swapping a file. Some old functionality had no modern equivalent at all, and the only honest answer was to decide whether to rebuild it or drop it.</p>
+      <p>PHPMailer, the library that sends the company's email, was the clearest example. Pacwill was running version 5.2, and essentially every function in it had changed in the versions since. There was no shortcut. We worked through the official upgrade guide and went function by function.</p>
+      <p>The lesson I took from this is that old software isn't just old code. It's years of accumulated decisions, dependencies, and assumptions, some of which nobody remembers making. A version number makes that look like a small gap. It isn't.</p>
+
+      <h3>Code with no one left to ask</h3>
+      <p>Both codebases grew over many years, built largely by people whose background was in mathematics rather than software engineering. That history shows in the structure. There are no comments through large sections, and the people who wrote them are no longer at the company, so the code is the only source of truth about what the code does.</p>
+      <p>I got used to tracing a file from top to bottom and building an understanding out of what was actually there. Two things made that harder. The same logic had often been copy-pasted into several files, so a fix in one place quietly left the same bug alive in three others. And global variables were used heavily, meaning a file's behaviour could depend on something set far away in a file I hadn't opened yet. Upgrading PHP versions made this visible, because variables that had worked fine for years suddenly came back undefined in certain paths through the code.</p>
+      <p>That's why the modernization plan grew a phase that wasn't in the original scope. An automated pipeline is only as good as the tests it runs, and the codebase as it stood couldn't be meaningfully tested, so the application had to be cleaned up before any of the automation could be built on top of it. My contribution here was mostly at the Docker layer, where Daniel and I wrote compose files that lint the codebase and flag outdated libraries, so problems surface automatically instead of being found by hand.</p>
+
+      <h3>What I'd tell myself in May</h3>
+      <p>The bugs I expected to be hard were the ones with cryptic error messages. Those turned out to be the easy ones. The hard problems were the ones where nothing was technically broken, the code just carried assumptions that stopped being true.</p>
     </section>
 
     <!-- 6. CONCLUSION -->
