@@ -23,3 +23,21 @@ footer {
   border-top: 1px solid #e5e5e5;
   color: #777;
 }
+
+/* Figures: an image with a caption underneath */
+.figure {
+  margin: 20px 0 25px 0;
+}
+.figure img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+.figure .caption {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666;
+}
