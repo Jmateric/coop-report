@@ -99,11 +99,53 @@
 
       <h3>The public website</h3>
       <p>About a month into the term, we noticed that pacwill.ca ranked poorly on Google searches and often sent people to product PDFs instead of proper web pages, which meant Pacwill was losing potential customers. Working with the marketing department on search engine optimization, I set out to build a landing page for every item in the company catalogue. The first thing I did was write a tracker script showing which items had a landing page and which still needed one. I then organized the remaining pages into batches, prioritizing the items with the highest sales.</p>
+      <div class="figure">
+        <img src="img/report/search.png" alt="Screenshot of the product search on pacwill.ca.">
+        <p class="caption">The product search on pacwill.ca. What a customer finds from here is the difference between a sale and a bounce.</p>
+      </div>
+
+      <div class="row">
+        <div class="span6">
+          <div class="figure">
+            <img src="img/report/searcholdresult.png" alt="Screenshot of the old search result, a raw PDF spec sheet.">
+            <p class="caption"><strong>Before:</strong> a search result dropped the customer into a raw PDF spec sheet. Google had little to index, so the page ranked poorly.</p>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="figure">
+            <img src="img/report/searchnewresult.png" alt="Screenshot of the new product landing page.">
+            <p class="caption"><strong>After:</strong> the landing page I built for the same product. Readable for customers, and indexable by search engines.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="figure">
+        <img src="img/report/tracker.png" alt="Screenshot of the tracker script listing which catalogue items have landing pages.">
+        <p class="caption">The tracker script I wrote first, before building any pages. It showed which catalogue items still needed one, which is what let me batch the work by sales priority instead of guessing.</p>
+      </div>
       <p>Building every page by hand would have taken the rest of my term, but the product details already existed in the manufacturers' spec sheets. So I wrote a Python tool that reads a spec sheet PDF, sends it to the Claude API, and generates a landing page from the extracted data. I used an AI model instead of a standard PDF library because some of the PDFs were so old that modern Python PDF libraries couldn't read them. It was also my first time working with an API.</p>
+      <div class="figure">
+        <img src="img/report/pdfparser.png" alt="Screenshot of the PDF parser tool.">
+        <p class="caption">The PDF parser. It reads a manufacturer's spec sheet, sends it to the Claude API, and returns structured data I could turn into a landing page. Some of the source PDFs were old enough that standard Python libraries couldn't read them at all.</p>
+      </div>
       <p>Along the way, I consolidated the site's search and page-linking code, which had been copied into several places, into a single shared file used by both the English and French versions. I also fixed display and file-loading bugs that only appeared in certain browsers.</p>
 
       <h3>The employee portal</h3>
       <p>Most of my work on db.pacwill.ca came through a company-wide Teams channel called IT Development, where anyone at Pacwill can report a problem or request a feature. Working through those requests was a big part of my day-to-day. That meant fixing bugs, many of which traced back to outdated PHP libraries, and building features employees asked for. I also built new view pages that modernized the portal's interface.</p>
+      <div class="row">
+        <div class="span6">
+          <div class="figure">
+            <img src="img/report/contactsold.png" alt="Screenshot of the contacts page in the employee portal before the rebuild.">
+            <p class="caption"><strong>Before:</strong> [DESCRIBE WHAT THE OLD PAGE LOOKED LIKE]</p>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="figure">
+            <img src="img/report/contactsnew.png" alt="Screenshot of the rebuilt contacts page in the employee portal.">
+            <p class="caption"><strong>After:</strong> [DESCRIBE WHAT CHANGED]</p>
+          </div>
+        </div>
+      </div>
 
       <h3>Modernizing the system</h3>
       <p>Later in the term, I joined the effort to modernize how Pacwill's software is developed and deployed, following a phased plan led by Daniel. Daniel taught me Docker, and we worked together to write the Dockerfiles for db.pacwill.ca, which runs as two containers, one for the Apache server backend and one for the employee portal, along with compose files that lint the codebase and flag outdated PHP libraries. The worst of those was PHPMailer. Pacwill was still running version 5.2, and essentially every function in it had changed, so we worked through the official <a href="https://github.com/PHPMailer/PHPMailer/blob/master/UPGRADING.md">PHPMailer upgrade guide</a> to bring it up to date. I'm currently working on moving the company's stored files to Google Cloud Storage. The project is still ongoing, and the Challenges section covers what made it so difficult.</p>
