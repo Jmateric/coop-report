@@ -69,7 +69,7 @@
         <p><small>May 11, 2026 &ndash; December 20, 2026<br>
         University of Guelph, Computer Science co-op work term report</small></p>
       </div>
-      <p class="lead">An account of my first co-op experience at Pacwill Environmental.</p>
+      <p class="lead">An account of my first co-op workterm at Pacwill Environmental.</p>
       <p>From May 2026, I worked as a Web Application Developer at Pacwill Environmental, a laboratory equipment distributor in Stoney Creek, Ontario. I split my time between two codebases: the company's public website, pacwill.ca, and db.pacwill.ca, the internal database and employee portal that runs almost all of Pacwill's business operations.</p>
       <p>My main projects were building a landing page for every product in the company catalogue to boost search engine optimization, with the help of a PDF parsing tool I wrote for the job, responding to bug reports and feature requests from employees across the company, and joining an ongoing effort to modernize and containerize Pacwill's database. What follows covers what I did, the goals I set and how they turned out, and what I found hardest about working in a system older than I am.</p>
     </section>
@@ -101,7 +101,7 @@
       <div class="page-header">
         <h2>My Job</h2>
       </div>
-      <p>My official title was Web Application Developer (co-op), and the job offer described the responsibilities in a single line: development of web applications, and other duties as assigned. In practice, that covered a lot of ground. I worked a hybrid schedule, two days a week in the Stoney Creek office and three from home, across two codebases: the public website, pacwill.ca, and the internal database and employee portal, db.pacwill.ca. Both are built with PHP, SQL, HTML, CSS, and JavaScript.</p>
+      <p>My official title was Web Application Developer (co-op), and the job offer described the responsibilities in a single line: development of web applications, and other duties as assigned. In practice, that covered a lot of ground. I worked a hybrid schedule, three days a week in the Stoney Creek office and two from home, across two codebases; both are built with PHP, SQL, HTML, CSS, and JavaScript.</p>
 
       <h3>The public website</h3>
       <p>About a month into the term, we noticed that pacwill.ca ranked poorly on Google searches and often sent people to product PDFs instead of proper web pages, which meant Pacwill was losing potential customers. Working with the marketing department on search engine optimization, I set out to build a landing page for every item in the company catalogue. The first thing I did was write a tracker script showing which items had a landing page and which still needed one. I then organized the remaining pages into batches, prioritizing the items with the highest sales.</p>
@@ -127,7 +127,7 @@
 
       <div class="figure">
         <img src="img/report/tracker.png" alt="Screenshot of the tracker script listing which catalogue items have landing pages.">
-        <p class="caption">The tracker script I wrote first, before building any pages. It showed which catalogue items still needed one, which is what let me batch the work by sales priority instead of guessing.</p>
+        <p class="caption">The tracker script I wrote before building any pages. It showed which catalogue items still needed a landing page instead of guessing.</p>
       </div>
       <p>Building every page by hand would have taken the rest of my term, but the product details already existed in the manufacturers' spec sheets. So I wrote a Python tool that reads a spec sheet PDF, sends it to the Claude API, and generates a landing page from the extracted data. I used an AI model instead of a standard PDF library because some of the PDFs were so old that modern Python PDF libraries couldn't read them. It was also my first time working with an API.</p>
       <div class="figure">
@@ -135,6 +135,8 @@
         <p class="caption">The PDF parser. It reads a manufacturer's spec sheet, sends it to the Claude API, and returns structured data I could turn into a landing page. Some of the source PDFs were old enough that standard Python libraries couldn't read them at all.</p>
       </div>
       <p>Along the way, I consolidated the site's search and page-linking code, which had been copied into several places, into a single shared file used by both the English and French versions. I also fixed display and file-loading bugs that only appeared in certain browsers.</p>
+      <p>In late summer and early fall Pacwill saw a slight drop in searches but more website sales, my theory is that the improved landing pages made it easier for customers to find what they were looking for which led to more purchases and reduced bot traffic.</p>
+
 
       <h3>The employee portal</h3>
       <p>Most of my work on db.pacwill.ca came through a company-wide Teams channel called IT Development, where anyone at Pacwill can report a problem or request a feature. Working through those requests was a big part of my day-to-day. That meant fixing bugs, many of which traced back to outdated PHP libraries, and building features employees asked for. I also built new view pages that modernized the portal's interface.</p>
@@ -154,10 +156,10 @@
       </div>
 
       <h3>Modernizing the system</h3>
-      <p>Later in the term, I joined the effort to modernize how Pacwill's software is developed and deployed, following a phased plan led by Daniel. Daniel taught me Docker, and we worked together to write the Dockerfiles for db.pacwill.ca, which runs as two containers, one for the Apache server backend and one for the employee portal, along with compose files that lint the codebase and flag outdated PHP libraries. The worst of those was PHPMailer. Pacwill was still running version 5.2, and essentially every function in it had changed, so we worked through the official <a href="https://github.com/PHPMailer/PHPMailer/blob/master/UPGRADING.md">PHPMailer upgrade guide</a> to bring it up to date. I'm currently working on moving the company's stored files to Google Cloud Storage. The project is still ongoing, and the Challenges section covers what made it so difficult.</p>
+      <p>Later in the term, I joined the effort to modernize how Pacwill's software is developed and deployed, following a phased plan led by Daniel Wang. Daniel taught me Docker, and we worked together to write the Dockerfiles for db.pacwill.ca, which runs as two containers, one for the Apache server backend and one for the employee portal, along with compose files that lint the codebase and flag outdated PHP libraries. The worst of those was PHPMailer. Pacwill was still running version 5.2, and essentially every function in it had changed, so we worked through the official <a href="https://github.com/PHPMailer/PHPMailer/blob/master/UPGRADING.md">PHPMailer upgrade guide</a> to bring it up to date. I'm currently working on moving the company's stored files to Google Cloud Storage and artifact registry. The project is still ongoing, and we will be working on it together until the end of my fall workterm.</p>
 
       <h3>Where my skills came from</h3>
-      <p>I came into this job with a strong foundation in C and Python, but little real experience with web development. I learned most of my PHP and SQL by reading the existing code. The course that prepared me most was CIS*2750, nicknamed "Angel of Death." It wasn't nearly as thorough as professional development, but it introduced a broad range of software development concepts that I ran into again at Pacwill. I'd estimate the course gave me about 30% of what I needed. The other 70% I learned on the job, much of it working with Daniel, who introduced me to Git, Docker, Google Cloud, Google Artifact Registry, Claude Code, and modern development workflows. Google Cloud was entirely new to me, and it's the reason I plan to take CIS*4010, Cloud Computing.</p>
+      <p>I came into this job with a strong foundation in C and Python, but little real experience with web development. I learned most of my PHP and SQL by reading the existing code. The course that prepared me most was CIS*2750, "Angel of Death." It wasn't nearly as thorough as professional development, but it introduced a broad range of software development concepts that I ran into again at Pacwill as well as teaching me how to think like a software engineer. I'd estimate the course gave me about 35% of what I needed. The other 65% (mostly just new technologies) I learned on the job, much of it working with Daniel, who introduced me to advanced Git, Docker, Google Cloud, Google Artifact Registry, and modern development workflows. Google Cloud was entirely new to me, and it's the reason I plan to take CIS*4010, Cloud Computing.</p>
     </section>
 
     <!-- 4. GOALS -->
@@ -173,19 +175,19 @@
 
       <h3>2. Integrative communication <span class="label label-success">Met</span></h3>
       <p class="muted"><em>Work directly with colleagues and end users to turn their needs into working features and fixes. Success meant at least three requests verified by the person who asked.</em></p>
-      <p>Most requests came through the IT Development Teams channel, and I handled far more than three. What this goal actually taught me is that people describe symptoms, not causes. Someone would report that a page stopped working or a PDF wasn't generating, and I'd have to message them back to find out exactly what they clicked and what they saw before I could tell what was wrong in the code. The search engine optimization work with the marketing department was different again, more back-and-forth about what customers should see than about any specific bug. Both taught me to communicate with people who don't write code.</p>
+      <p>Most requests came through the IT Development Teams channel, and I handled far more than three. What this goal actually taught me is that people dont like to change the systems that they're used to working with. Someone would report an issue, and I'd have interrogate them to reproduce the bug, and after findnig out that the issue was something weird that I would personally rewrite, they insited on keeping it the same so the best I could do was refactor as much as possible to maintain the same visual style. The search engine optimization work with the marketing department was different again, more back-and-forth about what customers should see than about any specific bug. Both taught me to communicate with people who don't write code.</p>
 
       <h3>3. Problem solving <span class="label label-success">Met</span> <span class="label label-warning">Bug log abandoned</span></h3>
       <p class="muted"><em>Identify, reproduce, and resolve bugs in a live production environment, keeping a log of each bug's symptom and root cause.</em></p>
-      <p>Debugging a live system is nothing like debugging my own projects, because I can't casually try things to see what happens. Most bugs arrived with no error message, just a description of what went wrong.</p>
-      <p>The most common failures were database query and connection problems. A page would load empty, or die halfway through and tell me nothing. My method was about as basic as it gets: scatter echo statements through the file, see how far it got before stopping, then move them closer together until I found the exact query that failed. Not sophisticated, but it worked every time, and it forced me to actually follow a file's logic instead of guessing at it.</p>
-      <p>The most memorable bug was a site-wide outage. I spent hours hunting for what I'd broken before discovering that nothing in the code was wrong at all. A coworker had reconfigured the database to block connections from the office IP address, so the fix was a change in Google Cloud rather than in the code. That one taught me the bug isn't always in the code.</p>
+      <p>Debugging a live system is nothing like debugging my own projects, I have no idea what casues errors or what the underlying issues are. Most bugs arrived with no error message, just a description of what went wrong.</p>
+      <p>The most common failures were database query and connection problems. A page would load empty, or die halfway through and tell me nothing. My method was about as basic as it gets: scatter echo statements through the file, see how far it got before stopping, then move them closer together until I found the exact query that failed. Not sophisticated, but it worked almost every time, and it forced me to actually follow a file's logic instead of guessing at it.</p>
+      <p>The most memorable bug was a site-wide outage. All the coding work was done on powershell, I would ssh into the server and just code on the command line. I got bored of this and decided to use VS Code to ssh into the server. This worked for a week before the server stopped working, everything was timing out, ssh stopped working, and nobody understood why. Turns out VS Code installs a cache folder on the server's boot disk that got filled up by regular use. We luckily had backups, but that experience taught me that infrastructure issues can be just as problematic as code issues.</p>
       <p>I never kept the bug log my action plan called for. It wasn't a well-designed goal to begin with, and I abandoned it as my job duties evolved. Tracking symptoms and root causes in a separate document assumed my work would stay bug-focused, and by mid-term most of it had shifted toward building landing pages and modernization work. What I kept instead were comments in the code near the fixes.</p>
 
       <h3>4. Personal organization and time management <span class="label label-success">Met</span></h3>
       <p class="muted"><em>Adopt a structured workflow so deadlines are met without sacrificing code quality, using a spreadsheet to break work into manageable tasks and regular check-ins with supervisors.</em></p>
       <p>The landing page project is where this actually mattered. Writing the tracker script first, then moving its results into a spreadsheet, is what let me batch the work by sales priority instead of working through the catalogue in whatever order I happened to open it.</p>
-      <p>The habit I'm keeping is checking priorities instead of assuming they hold. What's urgent in September isn't necessarily what was urgent in June, and asking my supervisor early cost me nothing.</p>
+      <p>The habit I'm keeping is checking priorities instead of assuming they hold. What's urgent in May isn't necessarily what was urgent in July, and asking my supervisor early cost me nothing.</p>
 
       <h3>5. Information literacy <span class="label label-success">Met</span></h3>
       <p class="muted"><em>Independently research, evaluate, and implement technical solutions using documentation, forums, and other developer resources, and document what I learn.</em></p>
@@ -201,17 +203,17 @@
       <p>The hardest part of my term wasn't writing new code. It was dealing with code that had been accumulating since before I was born.</p>
 
       <h3>"Upgrade the version number" is not a plan</h3>
-      <p>Parts of db.pacwill.ca were originally written for PHP 4, a version released in 2000. The modernization plan called for getting the codebase to PHP 8, and I went into that assuming it would mostly be a matter of finding what broke and fixing it. It wasn't. Functions we relied on had been deprecated in one version and removed entirely in a later one. Libraries had been rewritten so thoroughly that upgrading meant relearning them rather than swapping a file. Some old functionality had no modern equivalent at all, and the only honest answer was to decide whether to rebuild it or drop it.</p>
+      <p>Parts of db.pacwill.ca were originally written for PHP 4, a version released in 2000. The modernization plan called for getting the codebase to PHP 8, and I went into that assuming it would mostly be a matter of using the updated syntax. It wasn't. Functions we relied on had been deprecated in one version and removed entirely in a later one. Libraries had been rewritten so thoroughly that upgrading meant relearning them rather than swapping a file. Some old functionality had no modern equivalent at all, and the only honest answer was to decide whether to rebuild it or drop it.</p>
       <p>PHPMailer, the library that sends the company's email, was the clearest example. Pacwill was running version 5.2, and essentially every function in it had changed in the versions since. There was no shortcut. We worked through the official upgrade guide and went function by function.</p>
       <p>The lesson I took from this is that old software isn't just old code. It's years of accumulated decisions, dependencies, and assumptions, some of which nobody remembers making. A version number makes that look like a small gap. It isn't.</p>
 
       <h3>Code with no one left to ask</h3>
       <p>Both codebases grew over many years, built largely by people whose background was in mathematics rather than software engineering. That history shows in the structure. There are no comments through large sections, and the people who wrote them are no longer at the company, so the code is the only source of truth about what the code does.</p>
-      <p>I got used to tracing a file from top to bottom and building an understanding out of what was actually there. Two things made that harder. The same logic had often been copy-pasted into several files, so a fix in one place quietly left the same bug alive in three others. And global variables were used heavily, meaning a file's behaviour could depend on something set far away in a file I hadn't opened yet. Upgrading PHP versions made this visible, because variables that had worked fine for years suddenly came back undefined in certain paths through the code.</p>
-      <p>That's why the modernization plan grew a phase that wasn't in the original scope. An automated pipeline is only as good as the tests it runs, and the codebase as it stood couldn't be meaningfully tested, so the application had to be cleaned up before any of the automation could be built on top of it. My contribution here was mostly at the Docker layer, where Daniel and I wrote compose files that lint the codebase and flag outdated libraries, so problems surface automatically instead of being found by hand.</p>
+      <p>I got used to tracing a file from top to bottom and building an understanding out of what was actually there. Two things made that harder. The same logic had often been copy-pasted into several files, so a fix in one place quietly left the same bug alive in three others, and global variables were used heavily, meaning a file's behaviour could depend on something set far away in a file I hadn't opened yet. Upgrading PHP versions made this visible, because variables that had worked fine for years suddenly came back undefined in certain paths through the code.</p>
+      <p>This took a lot of refactoring to make the eventual CICD pipeline possible.</p>
 
       <h3>What I'd tell myself in May</h3>
-      <p>The bugs I expected to be hard were the ones with cryptic error messages. Those turned out to be the easy ones. The hard problems were the ones where nothing was technically broken, the code just carried assumptions that stopped being true.</p>
+      <p>Syntax errors are a blessing! Learning, and modernizing outdated system architecture is where 90% of my time is spent.</p>
     </section>
 
     <!-- 6. CONCLUSION -->
@@ -219,10 +221,10 @@
       <div class="page-header">
         <h2>Conclusion</h2>
       </div>
-      <p>I came to Pacwill in May able to write C and Python, and not much else. I leave able to work in a production PHP and SQL codebase, build and debug features that people depend on, and reason about how an application gets packaged and deployed rather than just how it runs on my laptop.</p>
-      <p>The part I didn't expect was how little of the job was writing new code. Most of my work was understanding code that already existed, usually code with no documentation and no one left to explain it. Reading unfamiliar code turned out to be the single most useful skill I built this term, more than any specific language or tool.</p>
-      <p>The other thing I'd carry forward is that the interesting problems weren't the ones with error messages. A site-wide outage caused by a firewall rule, a PHP upgrade blocked by two decades of accumulated assumptions, a search that technically worked but sent customers to the wrong place: none of those looked like bugs in the code, and none could be solved by reading the code alone. The job was figuring out which of those a problem actually was.</p>
-      <p>My work term isn't finished. I'm at Pacwill through December, and the migration is still underway. But the difference between the developer who started in May and the one writing this is that I now get handed infrastructure work and know where to begin.</p>
+      <p>I came to Pacwill in May with very little professional database/web development experience. Since then, I have learned to work in a production PHP and SQL codebase, build and debug features used by the company, and work with tools such as Git, Docker, APIs, and cloud infrastructure.</p>
+      <p>The most valuable thing I learned was how to work with software I did not write. </p>
+      <p>My work term is continuing through December, and the modernization work is still underway. I am leaving this stage of the term much more comfortable working independently, researching problems I have not encountered before, and understanding how the different parts of a software system fit together. The developer who started in May was focused on learning how to write code; the developer writing this report is much more focused on understanding the system that code is part of.
+</p>
     </section>
 
     <!-- 7. ACKNOWLEDGMENTS -->
@@ -230,11 +232,11 @@
       <div class="page-header">
         <h2>Acknowledgments</h2>
       </div>
-      <p>Thank you to everyone at Pacwill Environmental for making this a genuinely good place to learn, and to the University of Guelph co-op department for the placement. In particular, thank you to Sean Miner for the opportunity and the trust that came with it, to Daniel Wang for teaching me most of what I know about modern development practice, and to Tom Johnson for always being willing to stop and answer a question.</p>
+      <p>Thank you to everyone at Pacwill Environmental for making this a genuinely good place to learn, and to the University of Guelph co-op department for accepting this placement outside of Experience Guelph. In particular, thank you to Sean Miner for the opportunity and the trust that came with it, to Daniel Wang for teaching me most of what I know about modern development practices.</p>
     </section>
 
     <footer>
-      <p>&copy; 2026 Jovica Materic. University of Guelph co-op work term report, built with Bootstrap 2.3.2.</p>
+      <p>&copy; Summer 2026 Jovica Materic. University of Guelph co-op work term report, built with Bootstrap 2.3.2.</p>
     </footer>
 
   </div>
